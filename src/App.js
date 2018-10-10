@@ -1,27 +1,180 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+import { Router } from '@reach/router'
+
+import Header from './components/Header'
+import Main from './components/Main'
+import Nav from './components/Nav'
+import OneAuthor from './components/OneAuthor'
+import OneBook from './components/OneBook'
+import Side from './components/Side'
+import AddBook from './components/AddBook'
+import AddAuthor from './components/AddAuthor'
+
+const apiUrl = 'https://g-reads-server.herokuapp.com/author/'
+// const apiUrl = 'http://localhost:5000/author/'
+const bookUrl = 'https://g-reads-server.herokuapp.com/book/justbooks/'
+// const bookUrl = 'http://localhost:5000/book/justbooks/'
+const authorUrl = 'https://g-reads-server.herokuapp.com/author/justauthors/'
+// const authorUrl = 'http://localhost:5000/author/justauthors/'
+const join = 'https://g-reads-server.herokuapp.com/authorbook/'
+// const join = 'http://localhost:5000/authorbook/'
+const delBook = 'https://g-reads-server.herokuapp.com/book/'
+// const delBook = 'http://localhost:5000/book/'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: [],
+      book: [],
+      author: [],
+      join: [],
+      getId: 1,
+      bookId: 1
+    }
+  }
+
+  loadData = () => {
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          data: data.data,
+        })
+      })
+  }
+
+  loadBooks = () => {
+    fetch(bookUrl)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        book: data.data,
+      })
+    }) 
+  }
+
+  loadAuthors = () => {
+    fetch(authorUrl)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        author: data.data,
+      })
+    }) 
+  }
+
+  componentDidMount = () => {
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          data: data.data,
+        })
+      })
+
+      fetch(bookUrl)
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          book: data.data,
+        })
+      })
+
+      fetch(authorUrl)
+        .then(response => response.json())
+        .then(data => {
+          this.setState({
+            author: data.data
+            })
+        })
+
+      fetch(join)
+        .then(response => response.json())
+        .then(data => {
+          this.setState({
+            join: data.data
+          })
+        })
+  }
+
+  deleteBook = (id) => {
+    const options = {
+      method: 'DELETE',
+      headers: new Headers({
+          'content-type': 'application/json'
+      })
+    }
+
+    fetch(delBook + id, options)
+        .then(res => {
+            return res.json()
+        })
+        .then(() => {
+            const oldData = this.state.book
+            const newData = oldData.filter(item => {
+              return !(id === item.id)
+            })
+            this.setState({
+              book: newData
+            })
+        })
+  }
+
+  deleteAuthor = (id) => {
+    const options = {
+      method: 'DELETE',
+      headers: new Headers({
+          'content-type': 'application/json'
+      })
+    }
+
+    fetch(apiUrl + id, options)
+        .then(res => {
+            return res.json()
+        })
+        .then(() => {
+            const oldData = this.state.author
+            const newData = oldData.filter(item => {
+              return !(id === item.id)
+            })
+            this.setState({
+              author: newData
+            })
+        })
+  }
+
+  selectId = (id) => {
+    this.setState({
+      getId: id
+    })
+  }
+
+  selectBookId = (id) => {
+    this.setState({
+      bookId: id
+    })
+  }
+
   render() {
+    console.log("DATAAA - ", this.state.data)
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="Header b"><Header /></div>
+        <div className="Nav"> <Nav /></div>
+        <div className="Main ">
+          <Router >
+            <AddAuthor path='addauthor' loadAuthors={this.loadAuthors} />
+            <AddBook path='addbook' loadBooks={this.loadBooks} />
+            <OneBook path='book'selectBookId={this.selectBookId} bookId={this.state.bookId} join={this.state.join} loadData={this.loadData} selectId={this.selectId} book={this.state.book} getId={this.state.getId} data={this.state.data} author={this.state.author} />
+            <OneAuthor path='author' selectBookId={this.selectBookId} author={this.state.author} getId={this.state.getId} data={this.state.data} />
+            <Main path='/' selectBookId={this.selectBookId} deleteAuthor={this.deleteAuthor} deleteBook={this.deleteBook} loadAuthors={this.loadAuthors} selectId={this.selectId} author={this.state.author} book={this.state.book} data={this.state.data} getId={this.state.getId} loadBooks={this.loadBooks}/>
+          </Router>
+        </div>
+        <div className="Side b"><Side selectBookId={this.selectBookId} author={this.state.author} book={this.state.book} data={this.state.data} selectId={this.selectId} getId={this.state.getId}/></div>
       </div>
-    );
+    )
   }
 }
 
