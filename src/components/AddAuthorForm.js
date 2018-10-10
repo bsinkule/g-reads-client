@@ -41,9 +41,6 @@ class AddAuthorForm extends React.Component {
     }
 
     render() {
-        console.log("Author - ", this.state.author_id)
-        console.log("Book - ", this.state.book_id)
-        console.log("JoinStuff - ", this.props.join)
 
         const authors = this.props.author.map(author => {
             return <SelectNewAuthor   first={author.first}

@@ -45,7 +45,6 @@ class OneBook extends React.Component {
                                 id={each.author_id}
                                 getId={this.props.getId}
                                 selectId={this.props.selectId}
-                                
                                 />
             })
 
@@ -68,7 +67,7 @@ class OneBook extends React.Component {
                     {this.state.delForm ? <DeleteAuthorForm bookId={this.props.bookId} getId={this.props.getId} loadData={this.props.loadData} book={this.props.book} author={this.props.author} data={this.props.data}/> : null}
                 </div>
             )
-        } else {return <div>Not yet</div>}
+        } else {return <div>Loading...</div>}
     }
 }
 

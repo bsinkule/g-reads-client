@@ -189,7 +189,7 @@ html {
 
 /* The hero image */
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://revipop.files.wordpress.com/2015/08/bookshelf-filled-with-colorful-books.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://revipop.files.wordpress.com/2015/08/bookshelf-filled-with-colorful-books.jpg");
   height: 500px;
   background-position: center;
   background-repeat: no-repeat;
@@ -200,6 +200,7 @@ html {
 .hero-text {
   text-align: center;
   position: absolute;
+  font-size: 20px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -469,4 +470,6 @@ a {
   width: 35%;
 }
 
-
+.textShadow {
+  text-shadow: 3px 4px black;
+}

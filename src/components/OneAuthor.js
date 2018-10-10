@@ -42,7 +42,7 @@ class OneAuthor extends React.Component {
 
                 </div>
             )
-        } else {return <div>Not Yet</div>}
+        } else {return <div>Loading...</div>}
     }   
 }
 

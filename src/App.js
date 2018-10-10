@@ -10,6 +10,7 @@ import OneBook from './components/OneBook'
 import Side from './components/Side'
 import AddBook from './components/AddBook'
 import AddAuthor from './components/AddAuthor'
+import GenreList from './components/GenreList'
 
 const apiUrl = 'https://g-reads-server.herokuapp.com/author/'
 // const apiUrl = 'http://localhost:5000/author/'
@@ -31,7 +32,8 @@ class App extends Component {
       author: [],
       join: [],
       getId: 1,
-      bookId: 1
+      bookId: 1,
+      genre: 'JavaScript'
     }
   }
 
@@ -157,14 +159,20 @@ class App extends Component {
     })
   }
 
+  genreClick = (type) =>{
+      this.setState({
+          genre: type
+        })
+  }
+
   render() {
-    console.log("DATAAA - ", this.state.data)
     return (
       <div className="App">
         <div className="Header b"><Header /></div>
         <div className="Nav"> <Nav /></div>
         <div className="Main ">
           <Router >
+            <GenreList path='genre' selectBookId={this.selectBookId} book={this.state.book} genre={this.state.genre}/>
             <AddAuthor path='addauthor' loadAuthors={this.loadAuthors} />
             <AddBook path='addbook' loadBooks={this.loadBooks} />
             <OneBook path='book'selectBookId={this.selectBookId} bookId={this.state.bookId} join={this.state.join} loadData={this.loadData} selectId={this.selectId} book={this.state.book} getId={this.state.getId} data={this.state.data} author={this.state.author} />
@@ -172,7 +180,7 @@ class App extends Component {
             <Main path='/' selectBookId={this.selectBookId} deleteAuthor={this.deleteAuthor} deleteBook={this.deleteBook} loadAuthors={this.loadAuthors} selectId={this.selectId} author={this.state.author} book={this.state.book} data={this.state.data} getId={this.state.getId} loadBooks={this.loadBooks}/>
           </Router>
         </div>
-        <div className="Side b"><Side selectBookId={this.selectBookId} author={this.state.author} book={this.state.book} data={this.state.data} selectId={this.selectId} getId={this.state.getId}/></div>
+        <div className="Side b"><Side genreClick={this.genreClick} selectBookId={this.selectBookId} author={this.state.author} book={this.state.book} data={this.state.data} selectId={this.selectId} getId={this.state.getId}/></div>
       </div>
     )
   }

@@ -5,8 +5,8 @@ const Header = () => {
     return (
         <div className="hero-image">
             <div className="hero-text">
-                <h1>code books</h1>
-                <h3>... track them here</h3>
+            <img className="sideBookImg" src="https://image.flaticon.com/icons/png/128/182/182321.png" alt="movie clip"/>
+                <h1 className="textShadow">code books</h1>
             </div>
         </div>
     )

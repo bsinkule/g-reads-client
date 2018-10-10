@@ -69,9 +69,6 @@ class DeleteAuthorForm extends React.Component {
     }
 
     render() {
-        console.log("AuthorOther - ", this.state.author_id)
-        console.log("BookOther - ", this.state.book_id)
-        console.log("JoinOther - ", this.state.join)
 
         const authors = this.props.author.map(author => {
             return <SelectNewAuthor   first={author.first}
