@@ -8,13 +8,6 @@ const Nav = () => {
             <div className="nav-head">
                 <div className="nav-title">code books</div>
             </div>
-            <div className="nav-btn">
-                <label htmlFor="nav-check">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-            </div>
             <input type="checkbox" id="nav-check"/>
             <div className="nav-links">
                 <Link to='addbook'><p className="line">add book</p></Link>
