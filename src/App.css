@@ -4,12 +4,9 @@ body {
 }
 
 html {
-  /* height: 100%; */
   background-color: rgb(252, 249, 249);
 }
 
-
-/* Auto-load card data */
 .listing li:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   transform: translate(-2px, -2px);
@@ -57,31 +54,14 @@ html {
   transition: 0.3s;
 }
 
-/* .listing .body {
-  padding: 5px;
-} */
-
-/* .listing .wide {
-  grid-column-end: span 2;
-} */
-
 .resp {
     width: 100%;
     height: auto;
-    /* border-bottom: 1px solid #a5a4a2fb; */
 }
-
-
-
-
- /* Nav Bar */
  .nav {
   height: 50px;
   width: 100%;
   background-color: #755b5b;
-  /* position: fixed; */
-  /* top: 0;
-  z-index: 20; */
 }
 
 .nav > .nav-head {
@@ -115,13 +95,6 @@ html {
   margin-top: 0px;
 }
 
-/* .nav > .nav-links > p {
-  display: inline-block;
-  padding: 13px 10px 13px 10px;
-  text-decoration: none;
-  color: #efefef;
-  margin-top: 0px;
-} */
 
 .line:hover {
   background-color: rgba(0, 0, 0, 0.3);
@@ -132,7 +105,6 @@ html {
   display: none;
 }
 
-/* @media (max-width:600px) {
   .nav > .nav-btn {
     display: inline-block;
     position: absolute;
@@ -184,10 +156,7 @@ html {
     height: 150px;
     overflow-y: auto;
   }
-} */
 
-
-/* The hero image */
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://revipop.files.wordpress.com/2015/08/bookshelf-filled-with-colorful-books.jpg");
   height: 500px;
@@ -207,13 +176,11 @@ html {
   color: white;
 }
 
-/* Grid Template Areas */
 .b {
   border-radius: 2px;
   background-color: #d3d3d2;
   opacity: .8;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.637);
-
 }
 
 .Header {
@@ -256,10 +223,8 @@ html {
   }
 }
 
-/* EXTRA */
 .center {
   text-align: center;
-  /* position: sticky; */
   top: 0;
 }
 

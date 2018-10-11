@@ -13,15 +13,10 @@ import AddAuthor from './components/AddAuthor'
 import GenreList from './components/GenreList'
 
 const apiUrl = 'https://g-reads-server.herokuapp.com/author/'
-// const apiUrl = 'http://localhost:5000/author/'
 const bookUrl = 'https://g-reads-server.herokuapp.com/book/justbooks/'
-// const bookUrl = 'http://localhost:5000/book/justbooks/'
 const authorUrl = 'https://g-reads-server.herokuapp.com/author/justauthors/'
-// const authorUrl = 'http://localhost:5000/author/justauthors/'
 const join = 'https://g-reads-server.herokuapp.com/authorbook/'
-// const join = 'http://localhost:5000/authorbook/'
 const delBook = 'https://g-reads-server.herokuapp.com/book/'
-// const delBook = 'http://localhost:5000/book/'
 
 class App extends Component {
   constructor(props) {
@@ -122,6 +117,9 @@ class App extends Component {
               book: newData
             })
         })
+        .then(() => {
+          this.loadData()
+      })
   }
 
   deleteAuthor = (id) => {
@@ -145,6 +143,9 @@ class App extends Component {
               author: newData
             })
         })
+        .then(() => {
+          this.loadData()
+      })
   }
 
   selectId = (id) => {
@@ -177,7 +178,7 @@ class App extends Component {
             <AddBook path='addbook' loadBooks={this.loadBooks} />
             <OneBook path='book'selectBookId={this.selectBookId} bookId={this.state.bookId} join={this.state.join} loadData={this.loadData} selectId={this.selectId} book={this.state.book} getId={this.state.getId} data={this.state.data} author={this.state.author} />
             <OneAuthor path='author' selectBookId={this.selectBookId} author={this.state.author} getId={this.state.getId} data={this.state.data} />
-            <Main path='/' selectBookId={this.selectBookId} deleteAuthor={this.deleteAuthor} deleteBook={this.deleteBook} loadAuthors={this.loadAuthors} selectId={this.selectId} author={this.state.author} book={this.state.book} data={this.state.data} getId={this.state.getId} loadBooks={this.loadBooks}/>
+            <Main path='/' loadData={this.loadData} selectBookId={this.selectBookId} deleteAuthor={this.deleteAuthor} deleteBook={this.deleteBook} loadAuthors={this.loadAuthors} selectId={this.selectId} author={this.state.author} book={this.state.book} data={this.state.data} getId={this.state.getId} loadBooks={this.loadBooks}/>
           </Router>
         </div>
         <div className="Side b"><Side genreClick={this.genreClick} selectBookId={this.selectBookId} author={this.state.author} book={this.state.book} data={this.state.data} selectId={this.selectId} getId={this.state.getId}/></div>

@@ -12,6 +12,7 @@ const Main = (props) => {
                             selectBookId={props.selectBookId}
                             loadBooks={props.loadBooks}
                             deleteBook={props.deleteBook}
+                            loadData={props.loadData}
                             />
     })
 
@@ -24,6 +25,7 @@ const Main = (props) => {
                             selectId={props.selectId}
                             loadAuthors={props.loadAuthors}
                             deleteAuthor={props.deleteAuthor}
+                            loadData={props.loadData}
                             />
     })
 
