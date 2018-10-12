@@ -32,6 +32,9 @@ class UpdateBook extends React.Component {
             .then(() => {
                 this.props.loadBooks()
             })
+            .then(() => {
+                this.props.loadData()
+            })
     }
 
     handleChange = (e) => {
@@ -65,7 +68,7 @@ class UpdateBook extends React.Component {
                             <input className="inputUpdate" type="text" name="cover" value={this.state.cover} onChange={this.handleChange}/>
                         </label>
                     </div>
-                <button className="formButton" type="submit">Update Book</button>
+                <button className="addRemoveButton" type="submit">Update Book</button>
             </form>
         )
     }

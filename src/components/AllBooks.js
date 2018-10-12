@@ -29,7 +29,7 @@ class AllBooks extends React.Component {
                     <button className="addRemoveButton2" onClick={this.newShowUpdateForm}>Update Book Info</button>
                     <button className="addRemoveButton2" onClick={() => this.props.deleteBook(this.props.id)}>Delete Book</button>
                 </div>
-                {this.state.upForm ? <UpdateBook title={this.props.title} genre={this.props.genre} description={this.props.description} cover={this.props.cover} loadBooks={this.props.loadBooks} id={this.props.id}/> : null}    
+                {this.state.upForm ? <UpdateBook loadData={this.props.loadData} title={this.props.title} genre={this.props.genre} description={this.props.description} cover={this.props.cover} loadBooks={this.props.loadBooks} id={this.props.id}/> : null}    
             </li>
         )
     }

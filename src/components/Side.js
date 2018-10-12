@@ -15,6 +15,7 @@ class Side extends React.Component {
         const books = this.props.book.map(book => {
             return <Book    title={book.title}
                             id={book.id}
+                            key={book.id}
                             selectBookId={this.props.selectBookId}
                             />
         })
@@ -23,6 +24,7 @@ class Side extends React.Component {
             return <Author   first={author.first}
                             last={author.last}
                             id={author.id}
+                            key={author.id}
                             selectId={this.props.selectId}
                             />
         })

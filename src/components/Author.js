@@ -4,7 +4,7 @@ import {Link} from "@reach/router"
 const Author = (props) => {
     return (
         <Link to='/author'> 
-            <li onClick={() => props.selectId(props.id)}>
+            <li key={props.id} onClick={() => props.selectId(props.id)}>
                 <p>{props.first} {props.last}</p>
             </li>
         </Link>

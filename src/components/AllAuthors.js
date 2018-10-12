@@ -28,7 +28,7 @@ class AllAuthors extends React.Component {
                     <button className="addRemoveButton2" onClick={this.showUpdateForm}>Update Author Info</button>
                     <button className="addRemoveButton2" onClick={() => this.props.deleteAuthor(this.props.id)}>Delete Author</button>
                 </div>
-                {this.state.authForm ? <UpdateAuthor first={this.props.first} last={this.props.last} biography={this.props.biography} portrait={this.props.portrait} loadAuthors={this.props.loadAuthors} id={this.props.id}/> : null}    
+                {this.state.authForm ? <UpdateAuthor first={this.props.first} last={this.props.last} biography={this.props.biography} portrait={this.props.portrait} loadData={this.props.loadData} loadAuthors={this.props.loadAuthors} id={this.props.id}/> : null}    
             </li>
         )
     }

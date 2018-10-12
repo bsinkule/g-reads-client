@@ -32,6 +32,9 @@ class UpdateAuthor extends React.Component {
             .then(() => {
                 this.props.loadAuthors()
             })
+            .then(() => {
+                this.props.loadData()
+            })
     }
 
     handleChange = (e) => {

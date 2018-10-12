@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "@reach/router"
 
-const Nav = () => {
+const Nav = (props) => {
   
     return (
         <div className="nav">
@@ -10,6 +10,7 @@ const Nav = () => {
             </div>
             <input type="checkbox" id="nav-check"/>
             <div className="nav-links">
+                <Link to='search'><p onClick={props.resetInputs} className="line">search</p></Link>
                 <Link to='addbook'><p className="line">add book</p></Link>
                 <Link to='addauthor'><p className="line">add author</p></Link>
             </div>

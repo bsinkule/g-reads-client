@@ -11,12 +11,17 @@ import Side from './components/Side'
 import AddBook from './components/AddBook'
 import AddAuthor from './components/AddAuthor'
 import GenreList from './components/GenreList'
+import Search from './components/Search'
+import SearchResultAuthor from './components/SearchResultAuthor'
+import SearchResultBook from './components/SearchResultBook'
 
 const apiUrl = 'https://g-reads-server.herokuapp.com/author/'
 const bookUrl = 'https://g-reads-server.herokuapp.com/book/justbooks/'
 const authorUrl = 'https://g-reads-server.herokuapp.com/author/justauthors/'
 const join = 'https://g-reads-server.herokuapp.com/authorbook/'
 const delBook = 'https://g-reads-server.herokuapp.com/book/'
+const authUrl = 'https://g-reads-server.herokuapp.com/author/search/'
+const bokUrl = 'https://g-reads-server.herokuapp.com/book/search/'
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +33,9 @@ class App extends Component {
       join: [],
       getId: 1,
       bookId: 1,
-      genre: 'JavaScript'
+      genre: 'JavaScript',
+      last: [],
+      title: []
     }
   }
 
@@ -166,13 +173,64 @@ class App extends Component {
         })
   }
 
+  saveLastInput = () => { 
+    this.setState({
+        last: this.state.last
+    })
+  }
+  
+  saveTitleInput = () => { 
+    this.setState({
+        title: this.state.title
+    })
+  }
+
+fetchAuthSearch = () => {
+  fetch(`${authUrl}${this.state.last}`)
+      .then(res => res.json())
+      .then(data => {
+          this.setState({
+              last: data.matches
+          })
+      })   
+}
+
+fetchBookSearch = () => {
+  fetch(`${bokUrl}${this.state.title}`)
+      .then(res => res.json())
+      .then(data => {
+          this.setState({
+              title: data.matches
+          })
+      })   
+}
+
+handleChange = (e) => {
+  const key = e.target.name
+  const value = e.target.value
+  this.setState({
+      [key]: value
+  })
+}
+
+resetInputs = () => {
+  this.setState({
+    last: [],
+    title: []
+  })
+}
+
   render() {
+
     return (
       <div className="App">
         <div className="Header b"><Header /></div>
-        <div className="Nav"> <Nav /></div>
+        <div className="Nav"> <Nav resetInputs={this.resetInputs} /></div>
         <div className="Main ">
           <Router >
+            <Search path='search' fetchBookSearch={this.fetchBookSearch} saveTitleInput={this.saveTitleInput} title={this.state.title} last={this.state.last} handleChange={this.handleChange} saveLastInput={this.saveLastInput} fetchAuthSearch={this.fetchAuthSearch}/>
+            <SearchResultAuthor path='authorsearchresult' selectId={this.selectId} last={this.state.last}/>
+            <SearchResultBook path='booksearchresult' selectBookId={this.selectBookId} title={this.state.title}/>
             <GenreList path='genre' selectBookId={this.selectBookId} book={this.state.book} genre={this.state.genre}/>
             <AddAuthor path='addauthor' loadAuthors={this.loadAuthors} />
             <AddBook path='addbook' loadBooks={this.loadBooks} />
