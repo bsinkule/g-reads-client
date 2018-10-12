@@ -82,14 +82,15 @@ html {
 .nav > .nav-links {
   display: inline;
   float: right;
-  font-size: 18px;
-  padding-right: 30px;
+  font-size: 14px;
+  padding-right: 5px;
+  padding-bottom: 0;
 }
 
 .line {
   border-left: solid 1px darkgray;
   display: inline-block;
-  padding: 13px 10px 13px 10px;
+  padding: 17px 5px 17px 5px;
   text-decoration: none;
   color: #efefef;
   margin-top: 0px;
