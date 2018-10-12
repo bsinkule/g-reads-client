@@ -17,13 +17,13 @@ class GenreList extends React.Component {
 
         const genreBookList = genreFilter.map(books => {
             return (
-            <li>
-                <Link to='/book'><img onClick={() => this.props.selectBookId(books.id)} className="resp" src={books.cover} alt={books.title}/></Link>
-                <div className="body">
-                    <h2>{books.title}</h2>
-                    <h4>Genre: {books.genre}</h4>
-                </div>
-            </li>
+                <li>
+                    <Link to='/book'><img onClick={() => this.props.selectBookId(books.id)} className="resp" src={books.cover} alt={books.title}/></Link>
+                    <div className="body">
+                        <h2>{books.title}</h2>
+                        <h4>Genre: {books.genre}</h4>
+                    </div>
+                </li>
             )
         })
 
